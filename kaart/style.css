@@ -1,3 +1,14 @@
 img{
     display: none;
 }
+
+body{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    justify-content: center;
+}
+
+#CanvasYo{
+    align-self: center;
+}

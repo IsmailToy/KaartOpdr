@@ -13,11 +13,11 @@ class Kaart
     setBackground()
     {
         let ctx = this.ctx
-        ctx.fillStyle = "green";
-        ctx.fillRect(0,0,1000,600);
+        ctx.fillStyle = "white";
+        ctx.fillRect(0,0,1000,700);
 
-        ctx.strokeStyle = "red";
-        ctx.strokeRect(10,10,980,580);
+        ctx.strokeStyle = "black";
+        ctx.strokeRect(0,0,1000,700);
         ctx.lineWidth = 10;
     }
 
@@ -29,9 +29,9 @@ class Kaart
         g.strokeStyle = "black"
         
 
-        //dak
+        //roof
         g.beginPath();
-        g.fillStyle = "red"
+        g.fillStyle = "white"
         g.moveTo(x+150,y+50);
         g.lineTo(x+100,y+150);
         g.lineTo(x+300,y+200);
@@ -40,9 +40,9 @@ class Kaart
         g.stroke();
         g.fill();
 
-        //muren
+        //walls
         g.beginPath();
-        g.fillStyle = "grey"
+        g.fillStyle = "red"
         g.moveTo(x+300,y+200);
         g.lineTo(x+100,y+150);
         g.lineTo(x+100,y+250);
@@ -55,7 +55,7 @@ class Kaart
         g.stroke();
         g.fill();
 
-        //raam
+        //windows
         g.beginPath();
             g.fillStyle = "black"
         g.moveTo(x+250,y+215);
@@ -70,7 +70,7 @@ class Kaart
     drawTree(x, y) {
         let ctx = this.ctx
         ctx.fillStyle = "brown";
-        ctx.fillRect(x-10, y, 20, 100);
+        ctx.fillRect(x-10, y, 20, 120);
       
         ctx.beginPath();
         ctx.moveTo(x - 60, y+85);
@@ -81,7 +81,20 @@ class Kaart
         ctx.strokeStyle = "black";
         ctx.fill();
         ctx.stroke();
+      
+        ctx.beginPath();
+        ctx.moveTo(x, y - 100);
+        ctx.lineTo(x - 15, y - 80);
+        ctx.lineTo(x, y - 60);
+        ctx.lineTo(x + 15, y - 80);
+        ctx.lineTo(x, y - 100);
+        ctx.fillStyle = "yellow";
+        ctx.fill();
+    }
 
+    drawball(x, y)
+    {
+        let ctx = this.ctx
         ctx.beginPath();
         ctx.fillStyle = "red"
         ctx.arc(y+70, x-80, 11, 0, 2 * Math.PI);
@@ -105,24 +118,29 @@ class Kaart
         ctx.arc(y+105, x-90, 13, 0, 2 * Math.PI);
         ctx.arc(y+115, x-40, 10, 0, 2 * Math.PI);
         ctx.fill();
-      
-        ctx.beginPath();
-        ctx.moveTo(x, y - 100);
-        ctx.lineTo(x - 15, y - 80);
-        ctx.lineTo(x, y - 60);
-        ctx.lineTo(x + 15, y - 80);
-        ctx.lineTo(x, y - 100);
-        ctx.fillStyle = "yellow";
-        ctx.fill();
+    } 
+
+    drawRoad()
+    {
+        let ctx = this.ctx
+        ctx.fillStyle = "grey"
+        ctx.fillRect(5, 300, 990, 150)
     }
 
-    tekst()
+    drawRoadthingy(x,y)
+    {
+        let ctx = this.ctx
+        ctx.fillStyle = "white"
+        ctx.fillRect(50+x, 350+y, 110, 25)
+    }
+    
+    text()
     {
         let ctx = this.ctx
 
         ctx.fillStyle = "black"
         ctx.font = "35px Arial";
-        ctx.fillText("HAPPY CHARTIMAS!! WHA?! WHA?!", 200, 560);
+        ctx.fillText("HAPPY CHARTIMAS!! WHA?! WHA?!", 200, 600);
     }
 
     Frame()
@@ -134,14 +152,23 @@ class Kaart
     doGameFrame()
     {
         this.setBackground();
-        this.drawVillage(-80,90);
-        this.drawVillage(550,200);
-        this.drawVillage(300,-30);
-        this.tekst();
-        this.drawTree(450,350);
+        this.drawVillage(-70,-10);
+        this.drawVillage(570,-10);
+        this.drawVillage(250,-10);
+        this.text();
+        this.drawTree(100,560);
+        this.drawTree(900,560);
+        this.drawball(650,0);
+        this.drawball(650,800);
+        this.drawRoad();
+        this.drawRoadthingy(0,15);
+        this.drawRoadthingy(200,15);
+        this.drawRoadthingy(400,15);
+        this.drawRoadthingy(600,15);
+        this.drawRoadthingy(800,15);
         this.ctx.drawImage(this.foto, this.fotoX, this.fotoY);
-        this.fotoX += 10;
-        
+        this.fotoX += 5;
+
     }
     
     
